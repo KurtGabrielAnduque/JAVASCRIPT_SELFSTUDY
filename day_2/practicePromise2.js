@@ -59,7 +59,17 @@ function takeoutTrash(){
     });
 }
 
+// there are many ways on how we can call a promise
+// first is we have a chain
 
+
+walkDog().then(value => {console.log(value); return cleanKitchen()})
+         .then(value => {console.log(value); return takeoutTrash()})
+         .then(value => {console.log(value); console.log(`you manage to finish all task mom happy`)})
+         .catch(error => console.log(error));
+
+
+// the second one is the get all status
 Promise.allSettled([walkDog(), cleanKitchen(), takeoutTrash()])
     .then(promiseStatus => {
         console.log("Here is your final chore report card:");
